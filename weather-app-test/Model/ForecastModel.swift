@@ -15,6 +15,9 @@ struct DailyForecast: Codable, Identifiable {
     let date: String
     let highTemp: Double
     let lowTemp: Double
+    let windSpeed: Double
+    let rh: Int
+    let pop: Double
     let weather: WeatherDescription
     let temp: Double?
     
@@ -22,6 +25,8 @@ struct DailyForecast: Codable, Identifiable {
         case date = "valid_date"
         case highTemp = "high_temp"
         case lowTemp = "low_temp"
+        case windSpeed = "wind_spd"
+        case rh, pop
         case weather
         case temp
     }
