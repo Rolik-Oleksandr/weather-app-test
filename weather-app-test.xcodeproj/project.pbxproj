@@ -10,9 +10,22 @@
 		1AB9E0DC2DFCAC2C006A4533 /* weather-app-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "weather-app-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1A8876F62DFD750B003C8512 /* Exceptions for "weather-app-test" folder in "weather-app-test" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1AB9E0DB2DFCAC2C006A4533 /* weather-app-test */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1AB9E0DE2DFCAC2C006A4533 /* weather-app-test */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1A8876F62DFD750B003C8512 /* Exceptions for "weather-app-test" folder in "weather-app-test" target */,
+			);
 			path = "weather-app-test";
 			sourceTree = "<group>";
 		};
@@ -254,6 +267,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"weather-app-test/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "weather-app-test/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app need your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we need your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -282,6 +298,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"weather-app-test/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "weather-app-test/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app need your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we need your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
