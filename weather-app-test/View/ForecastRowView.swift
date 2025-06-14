@@ -17,12 +17,11 @@ struct ForecastRowView: View {
                     HStack {
                         Text(forecast.getDayOfWeek(date: forecast.date))
                             .font(.headline)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.white)
                         Text(forecast.getDayNumber(from: forecast.date))
                             .font(.headline)
+                            .foregroundColor(.white)
                     }
-                    Text(forecast.weather.description)
-                        .font(.subheadline)
                 }
                 
                 
