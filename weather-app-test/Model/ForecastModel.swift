@@ -30,6 +30,29 @@ struct DailyForecast: Codable, Identifiable {
         guard let temp = temp else { return "N/A" }
         return "\(temp)`C"
     }
+    
+    func getDayNumber(from dateString: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        if let date = formatter.date(from: dateString) {
+            let calendar = Calendar.current
+            let day = calendar.component(.day, from: date)
+            return "\(day)"
+        }
+        return "-"
+    }
+    
+    func getDayOfWeek(date: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "en_US")
+        if let date = formatter.date(from: date) {
+            formatter.dateFormat = "EEE"
+            return formatter.string(from: date).capitalized
+        }
+        return "unknown"
+    }
 }
 
 struct WeatherDescription: Codable {
