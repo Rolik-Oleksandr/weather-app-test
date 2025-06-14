@@ -4,61 +4,53 @@ struct ForecastView: View {
     @StateObject private var viewModel = ForecastViewModel()
     @StateObject private var locationManager = LocationManager()
     
-    @State private var city = ""
-    @State private var hasFetchedLocation = false
+    @State private var city: String = ""
+    @State private var hasFetchedLocation: Bool = false
     
     var body: some View {
-        VStack {
-            TextField("Select your city", text: $city)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            Button("Get forecast") {
-                viewModel.fetchWeather(for: city)
-            }
-            .padding()
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.blue.opacity(0.5), Color.green.opacity(0.2)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
             
             ScrollView {
-                ForEach(viewModel.forecast) { forecast in
-                    ForecastRow(forecast: forecast)
+                VStack {
+                    HStack {
+                        Image(systemName: Constants.Images.geoIcon)
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(.bottom, 20)
+                        Text("\(viewModel.cityName)")
+                            .font(.title)
+                            .bold()
+                            .padding(.bottom)
+                    }
+                    
+                    SearchBarView(text: $city, onSearch: {
+                        viewModel.fetchWeather(for: city)
+                    })
+                    
+                    if let today = viewModel.todayForecast {
+                        DailyForecastView(forecast: today)
+                    }
+                    
+                    ForEach(viewModel.forecast) { forecast in
+                        ForecastRowView(forecast: forecast)
+                    }
+                    
+                    Spacer()
                 }
-                
-                Spacer()
+                .padding(.top, 70)
+                .onReceive(locationManager.$lastLocation) { location in
+                    guard let location, !hasFetchedLocation else { return }
+                    hasFetchedLocation = true
+                    viewModel.fetchCityName(from: location)
+                }
             }
         }
-        .onReceive(locationManager.$lastLocation) { location in
-            guard let location, !hasFetchedLocation else { return }
-            hasFetchedLocation = true
-            viewModel.fetchCityName(from: location)
-        }
-        .padding()
-    }
-}
-
-struct ForecastRow: View {
-    let forecast: DailyForecast
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(forecast.date)
-                    .font(.headline)
-                Text(forecast.weather.description)
-                    .font(.subheadline)
-            }
-            
-            Spacer()
-            
-            HStack {
-                Text("max: \(Int(forecast.highTemp))")
-                Text("low: \(Int(forecast.lowTemp))")
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(10)
-        .shadow(radius: 2)
-        .padding(.horizontal)
+        .ignoresSafeArea()
     }
 }
 
