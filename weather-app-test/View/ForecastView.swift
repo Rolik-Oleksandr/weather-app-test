@@ -2,7 +2,10 @@ import SwiftUI
 
 struct ForecastView: View {
     @StateObject private var viewModel = ForecastViewModel()
+    @StateObject private var locationManager = LocationManager()
+    
     @State private var city = ""
+    @State private var hasFetchedLocation = false
     
     var body: some View {
         VStack {
@@ -22,6 +25,11 @@ struct ForecastView: View {
                 
                 Spacer()
             }
+        }
+        .onReceive(locationManager.$lastLocation) { location in
+            guard let location, !hasFetchedLocation else { return }
+            hasFetchedLocation = true
+            viewModel.fetchCityName(from: location)
         }
         .padding()
     }
