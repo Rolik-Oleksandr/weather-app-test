@@ -1,4 +1,5 @@
 import Combine
+import CoreLocation
 
 class ForecastViewModel: ObservableObject {
     @Published var forecast: [DailyForecast] = []
@@ -15,5 +16,16 @@ class ForecastViewModel: ObservableObject {
                 self?.forecast = response.data
             }
             .store(in: &cancellables)
+    }
+    
+    func fetchCityName(from location: CLLocation) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            if let city = placemarks?.first?.locality {
+                DispatchQueue.main.async {
+                    self?.fetchWeather(for: city)
+                }
+            }
+        }
     }
 }
