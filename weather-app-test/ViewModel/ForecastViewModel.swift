@@ -11,6 +11,7 @@ class ForecastViewModel: ObservableObject {
     func fetchWeather(for city: String) {
         forecastService.fetchForecast(city: city)
             .sink { [weak self] completion in
+                print(completion)
             } receiveValue: { [weak self] response in
                 self?.cityName = response.cityName
                 self?.forecast = response.data
@@ -27,5 +28,14 @@ class ForecastViewModel: ObservableObject {
                 }
             }
         }
+    }
+    var todayForecast: DailyForecast? {
+        forecast.first(where: { $0.date == getTodayDateString() })
+    }
+    
+    func getTodayDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: Date())
     }
 }
