@@ -25,9 +25,7 @@ The task was to build an iOS app that:
 
 ---
 
-### 🔹 Main screen with current city forecast:
-<img src="Assets/Screenshot-dark.png" width="300" />
+<img src="weather-app-test/Assets/Screenshot-dark.png" width="300" />
 
-### 🔹 Daily forecast screen:
-<img src="Assets/Screenshot-light.png" width="300" />
+<img src="weather-app-test/Assets/Screenshot-light.png" width="300" />
 
