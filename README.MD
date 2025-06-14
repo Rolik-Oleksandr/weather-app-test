@@ -25,7 +25,6 @@ The task was to build an iOS app that:
 
 ---
 
-<img src="weather-app-test/Assets/Screenshot-dark.png" width="300" />
-
-<img src="weather-app-test/Assets/Screenshot-light.png" width="300" />
+![Image](https://github.com/user-attachments/assets/a3b99477-7eb7-467e-82ed-18148c7b2c69)
+![Image](https://github.com/user-attachments/assets/d926fbbf-d971-46c4-8231-f331e4656e21)
 
