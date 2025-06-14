@@ -6,9 +6,12 @@ struct SearchBarView: View {
     
     var body: some View {
         HStack {
-            TextField("Search for a city", text: $text, onCommit: onSearch)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.leading)
+            TextField(Constants.Texts.searchCityButtonTitle, text: $text, onCommit: onSearch)
+                .padding(.vertical, 6)
+                .padding(.horizontal)
+                .background(Color.clear)
+                .foregroundColor(.primary)
+                .font(.body)
             
             Button(action: onSearch) {
                 Image(systemName: Constants.Images.glassIcon)
